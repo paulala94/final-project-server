@@ -39,7 +39,9 @@ Base URL `/api/card`
 
 | HTTP Method | URI path              | Description          |
 | ----------- | --------------------- | -------------------- |
+| GET         | `/getAllCards`        | Get all cards        |
 | GET         | `/getCardByOwner/:id` | Get card by owner ID |
+| GET         | `/getRandomCard`      | Get random card      |
 | POST        | `/createCard`         | Create new card      |
 | PUT         | `/editCard/:id`       | Edit card by ID      |
 | DELETE      | `/deleteCard/:id`     | Delete card by ID    |
