@@ -8,7 +8,7 @@ const cardSchema = new Schema(
      unique: true,
     },
     genre: {
-        enum: ['cine', 'música', 'literatura', 'política', 'otros']
+        enum: ['cine', 'tv', 'historia', 'música', 'literatura', 'política', 'otros']
     },
     description: {
       type: String
@@ -20,10 +20,10 @@ const cardSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Deck'
     }],
-    owner: {
-       ref: 'User',
-       type: Schema.Types.ObjectId
-        },
+    // owner: {
+    //    ref: 'User',
+    //    type: Schema.Types.ObjectId
+    //     },
   },
   {
     timestamps: true

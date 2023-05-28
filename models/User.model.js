@@ -4,19 +4,21 @@ const userSchema = new Schema(
   {
     email: {
       type: String,
-      required: [true, 'Email is required.'],
+      required: [true, 'El email es obligatorio'],
       unique: true,
       lowercase: true,
       trim: true
     },
     username: {
       type: String,
-      required: [true, 'Email is required.'],
+      required: [true, 'El nombre de usuario es obligatorio'],
       unique: true,
+      minlength: [3, 'El nombre de usuario es demasiado corto']
     },
     password: {
       type: String,
-      required: [true, 'Password is required.']
+      required: [true, 'La contraseña es obligatoria'],
+      minlength: [3, 'La contraseña es demasiado corta']
     },
     description: {
       type: String
