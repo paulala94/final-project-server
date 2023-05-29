@@ -1,5 +1,6 @@
 // const router = require("express").Router()
 
+<<<<<<< HEAD
 // const Card = require('./../models/Card.model')
 
 // router.get('/getAllCards', (req, res, next) => {
@@ -11,3 +12,8 @@
 // })
 
 // module.exports = router
+=======
+// const Card = require('../models/Card.model')
+// .
+// router.get('get')
+>>>>>>> 9e95ce2dac9ebf7e3dc86d0a0c1ddeffd194cb97

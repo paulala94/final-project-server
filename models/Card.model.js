@@ -15,15 +15,7 @@ const cardSchema = new Schema(
     },
     color: {
       type: String,
-    },
-    decks: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Deck'
-    }],
-    // owner: {
-    //    ref: 'User',
-    //    type: Schema.Types.ObjectId
-    //     },
+    }
   },
   {
     timestamps: true
