@@ -17,15 +17,13 @@ const userSchema = new Schema(
     },
     password: {
       type: String,
-      required: [true, 'La contraseña es obligatoria'],
-      minlength: [3, 'La contraseña es demasiado corta']
     },
     description: {
       type: String
     },
     avatar: {
-    type: String,
-    default: 'https://i.stack.imgur.com/l60Hf.png'
+      type: String,
+      default: 'https://i.stack.imgur.com/l60Hf.png'
     },
     role: {
       type: String,
@@ -39,7 +37,7 @@ const userSchema = new Schema(
     cards: [{
       type: Schema.Types.ObjectId,
       ref: 'Card'
-    }],
+    }]
   },
   {
     timestamps: true

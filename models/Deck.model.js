@@ -11,16 +11,12 @@ const deckSchema = new Schema(
       type: String
     },
     color: {
-    type: String,
+      type: String,
     },
     cards: [{
       type: Schema.Types.ObjectId,
       ref: 'Card'
-    }],
-    owner: {
-       ref: 'User',
-       type: Schema.Types.ObjectId
-        },
+    }]
   },
   {
     timestamps: true

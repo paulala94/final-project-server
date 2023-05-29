@@ -1,5 +1,5 @@
-const router = require("express").Router()
+// const router = require("express").Router()
 
-const Card = require('../models/Card.model')
-.
-router.get('get')
+// const Card = require('../models/Card.model')
+// .
+// router.get('get')
