@@ -1,7 +1,8 @@
 const router = require ("express").Router()
 const bcrypt = require('bcryptjs')
-
+const jwt = require ('jsonwebtoken')
 const User = require("./../models/User.model")
+const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 const saltRounds = 10
 
 
@@ -37,5 +38,44 @@ router.post("/signup", (req, res, next) => {
         })
         .catch(err => next(err))
 })
+
+router.post("/login", (req, res, next) => {
+
+    const { email, password } = req.body
+
+    if (email === '' || password === '') {
+        res.status(400).json({message:"Inserta email y contraseña"})
+        return
+    }
+
+    User
+        .findOne({email})
+        .then((foundUser) => {
+            if(!foundUser) {
+                res.status(401).json({ message: 'Usuario no encontrado'})
+                return
+            }
+            if(bcrypt.compareSync(password, foundUser.password)) {
+                const { _id, email, username } = foundUser
+                const payload = { _id, email, username }
+                const authToken = jwt.sign(
+                    payload,
+                    process.env.TOKEN_SECRET,
+                    {algorithm:'HS256', expiresIn:'6h'}
+                )
+                res.json({authToken:authToken})
+            }
+            else{
+                res.status(401).json({ message: 'Incapaz de autentificar el user'})
+            }
+        })
+        .catch(err => next(err))
+})
+
+router.get('/verify', isAuthenticated, (req, res, next) => {
+
+    res.status(200).json(req.payload)
+})
+
 
 module.exports = router
