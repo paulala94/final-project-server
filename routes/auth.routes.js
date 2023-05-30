@@ -5,10 +5,10 @@ const User = require("./../models/User.model")
 const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 const saltRounds = 10
 
-
+//signup
 router.post("/signup", (req, res, next) => {
 
-    const { email, password, username, avatar, description } = req.body
+    const { email, password, username, image, description } = req.body
     
     if ( password.length < 3 ) {
 
@@ -28,17 +28,19 @@ router.post("/signup", (req, res, next) => {
             const salt = bcrypt.genSaltSync(saltRounds)
             const hashedPassword = bcrypt.hashSync(password, salt)
 
-            return User.create({ email, password: hashedPassword, username })
+            return User.create({ email, password: hashedPassword, username, image,description })
         })
         .then((createdUser) => {
-            const { email, _id, username, avatar, description } = createdUser
-            const user = { email, _id, username, avatar, description }
+            const { email, _id, username, image, description } = createdUser
+            const user = { email, _id, username, image, description }
 
             res.status(201).json({ user })
         })
         .catch(err => next(err))
 })
 
+
+//login
 router.post("/login", (req, res, next) => {
 
     const { email, password } = req.body

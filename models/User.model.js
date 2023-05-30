@@ -21,7 +21,7 @@ const userSchema = new Schema(
     description: {
       type: String
     },
-    avatar: {
+    image: {
       type: String,
       default: 'https://i.stack.imgur.com/l60Hf.png'
     },
