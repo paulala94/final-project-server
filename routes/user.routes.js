@@ -6,13 +6,13 @@ const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 
 //get user
 
-router.get("/getUser/:_id", isAuthenticated, (req, res, next) => {
+router.get("/:_id", isAuthenticated, (req, res, next) => {
     const {_id} = req.params
 
     User
     .findById(_id)
-    .then((findUser) => {
-        res.json(findUser)
+    .then((user) => {
+        res.json(user)
     })
      .catch(err => next(err))
 })
@@ -37,6 +37,18 @@ router.put("/edit/:_id", isAuthenticated, (req, res, next) => {
         })
     .catch(err => next(err))
 
+})
+
+
+//delete user
+
+router.delete("/delete/:_id", isAuthenticated, (req, res,next) => {
+    const { _id } = req.params
+
+    User
+    .findByIdAndDelete(_id)
+    .then(() => res.json("Usuario eliminado correctamente"))
+     .catch(err => next(err))
 })
 
 
