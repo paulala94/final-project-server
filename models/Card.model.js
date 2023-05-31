@@ -14,7 +14,7 @@ const cardSchema = new Schema(
       type: String
     },
     color: {
-      type: String,
+        enum: ['Rojo', 'Naranja', 'Amarillo', 'Verde', 'Azul', 'Morado', 'Rosa']
     },
     owner: [{
       type: Schema.Types.ObjectId,

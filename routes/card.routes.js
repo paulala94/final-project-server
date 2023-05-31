@@ -1,13 +1,32 @@
-// const router = require("express").Router()
+const router = require("express").Router()
+const Card = require('./../models/Card.model')
+const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 
-// const Card = require('./../models/Card.model')
+// CREATE CARDS
 
-// router.get('/getAllCards', (req, res, next) => {
+router.post('/createCard', isAuthenticated, (req, res, next) => {
 
-//     Card
-//         .find()
-//         .then(response => res.json(response))
-//         .catch(err => next(err))
-// })
+    const { name, genre, description, color } = req.body
+    const { _id: owner } = req.payload
 
-// module.exports = router
+    Card
+        .create({ name, genre, description, color, owner })
+        .then( response => res.json(response))
+        .catch(err => next(err))
+})
+
+
+// EDIT CARD
+
+// GET ALL CARDS
+router.get('/getAllCards', (req, res, next) => {
+
+    Card
+        .find()
+        .then(response => res.json(response))
+        .catch(err => next(err))
+})
+
+
+
+module.exports = router
