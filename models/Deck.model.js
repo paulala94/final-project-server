@@ -16,6 +16,10 @@ const deckSchema = new Schema(
     cards: [{
       type: Schema.Types.ObjectId,
       ref: 'Card'
+    }],
+    owner: [{
+      type: Schema.Types.ObjectId,
+      ref: 'User'
     }]
   },
   {

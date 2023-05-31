@@ -29,15 +29,7 @@ const userSchema = new Schema(
       type: String,
       enum: ['USER', 'ADMIN'],
       default: 'USER',
-    },
-    decks: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Deck'
-    }],
-    cards: [{
-      type: Schema.Types.ObjectId,
-      ref: 'Card'
-    }]
+    }
   },
   {
     timestamps: true
