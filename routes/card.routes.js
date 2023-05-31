@@ -6,11 +6,11 @@ const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 
 router.post('/createCard', isAuthenticated, (req, res, next) => {
 
-    const { name, genre, description, color } = req.body
+    const { name, genre, description } = req.body
     const { _id: owner } = req.payload
 
     Card
-        .create({ name, genre, description, color, owner })
+        .create({ name, genre, description, owner })
         .then( response => res.json(response))
         .catch(err => next(err))
 })

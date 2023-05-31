@@ -17,5 +17,3 @@ console.log('ruta------', req.file.path)
 
 module.exports = router
 
-
-module.exports = router

@@ -7,15 +7,16 @@ const cardSchema = new Schema(
      required: [true, 'Email is required.'],
      unique: true,
     },
-    genre: {
-        enum: ['cine', 'tv', 'historia', 'música', 'literatura', 'política', 'otros']
+    genre: { 
+        type: String,
+        enum: ['Cine', 'TV', 'Historia', 'Música', 'Literatura', 'Política', 'Otros']
     },
     description: {
       type: String
     },
-    color: {
-        enum: ['Rojo', 'Naranja', 'Amarillo', 'Verde', 'Azul', 'Morado', 'Rosa']
-    },
+    // color: {
+    //     enum: ['Rojo', 'Naranja', 'Amarillo', 'Verde', 'Azul', 'Morado', 'Rosa']
+    // },
     owner: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
