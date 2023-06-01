@@ -2,18 +2,10 @@ const router = require("express").Router()
 const Card = require('./../models/Card.model')
 const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 
-const { createCard, getAllCards } = require("../controllers/card.controller")
-// CREATE CARDS
+const { createCard, getAllCards, editCard } = require("../controllers/card.controller")
 
-// TODO: DESACOPLAR CONTROLADORES
 router.post('/createCard', isAuthenticated, createCard)
-
-
-// GET ALL CARDS
 router.get('/getAllCards', getAllCards)
-
-
-// EDIT CARD
-
+router.put('/editCard/:_id', isAuthenticated, editCard)
 
 module.exports = router
