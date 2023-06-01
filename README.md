@@ -46,7 +46,6 @@ Base URL `/api/card`
 | PUT         | `/editCard/:id`       | Edit card by ID      |
 | DELETE      | `/deleteCard/:id`     | Delete card by ID    |
 
-
 ## Upload routes
 
 Base URL `/api/upload`

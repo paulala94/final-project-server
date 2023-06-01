@@ -14,9 +14,6 @@ const cardSchema = new Schema(
     description: {
       type: String
     },
-    // color: {
-    //     enum: ['Rojo', 'Naranja', 'Amarillo', 'Verde', 'Azul', 'Morado', 'Rosa']
-    // },
     owner: [{
       type: Schema.Types.ObjectId,
       ref: 'User'
@@ -29,4 +26,4 @@ const cardSchema = new Schema(
 
 const card = model("card", cardSchema);
 
-module.exports = card;
+module.exports = card
