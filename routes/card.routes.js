@@ -4,6 +4,7 @@ const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 
 // CREATE CARDS
 
+// TODO: DESACOPLAR CONTROLADORES
 router.post('/createCard', isAuthenticated, (req, res, next) => {
 
     const { name, genre, description } = req.body
@@ -11,7 +12,7 @@ router.post('/createCard', isAuthenticated, (req, res, next) => {
 
     Card
         .create({ name, genre, description, owner })
-        .then( response => res.json(response))
+        .then(response => res.json(response))
         .catch(err => next(err))
 })
 
@@ -20,9 +21,11 @@ router.post('/createCard', isAuthenticated, (req, res, next) => {
 router.get('/getAllCards', (req, res, next) => {
     
     Card
-    .find()
-    .then(response => res.json(response))
-    .catch(err => next(err))
+        .find()
+        .sort({name: 1})
+        //.select({name: 1}) ---> esto hace que solo salga el name
+        .then(response => res.json(response))
+        .catch(err => next(err))
 })
 
 

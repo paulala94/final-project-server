@@ -12,7 +12,8 @@ router.post("/signup", (req, res, next) => {
     
     if ( password.length < 3 ) {
 
-        res.status(400).json({ message: 'La contraseña tiene que tener mínimo 3 caracteres'})
+        res.sendStatus(400)
+        // .json({ message: 'La contraseña tiene que tener mínimo 3 caracteres'})
         return
     }
 
@@ -20,8 +21,8 @@ router.post("/signup", (req, res, next) => {
         .findOne({ email })
         .then((foundUser) => {
             if (foundUser) {
-                
-                res.status(400).json({ message: 'Usuario ya existente'})
+                res.sendStatus(400)
+                // res.status(400).json({ message: 'Usuario ya existente'})
                 return
             }
 
@@ -46,7 +47,8 @@ router.post("/login", (req, res, next) => {
     const { email, password } = req.body
 
     if (email === '' || password === '') {
-        res.status(400).json({message:"Inserta email y contraseña"})
+        res.sendStatus(400)
+        // .json({message:"Inserta email y contraseña"})
         return
     }
 
@@ -54,7 +56,8 @@ router.post("/login", (req, res, next) => {
         .findOne({email})
         .then((foundUser) => {
             if(!foundUser) {
-                res.status(401).json({ message: 'Usuario no encontrado'})
+                res.sendStatus(401)
+                // .json({ message: 'Usuario no encontrado'})
                 return
             }
             if(bcrypt.compareSync(password, foundUser.password)) {
@@ -68,15 +71,14 @@ router.post("/login", (req, res, next) => {
                 res.json({authToken:authToken})
             }
             else{
-                res.status(401).json({ message: 'Incapaz de autentificar el user'})
+                res.sendStatus(401)
+                // .json({ message: 'Incapaz de autentificar el user'})
             }
         })
         .catch(err => next(err))
 })
 
 router.get('/verify', isAuthenticated, (req, res, next) => {
-
-    console.log(req.payload)
 
     res.status(200).json(req.payload)
 })
