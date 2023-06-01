@@ -1,6 +1,5 @@
 const router = require("express").Router()
 const Card = require('./../models/Card.model')
-const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 
 // CREATE CARDS
 const createCard = (req, res, next) => {
