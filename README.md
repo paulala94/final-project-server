@@ -25,14 +25,14 @@ Base URL `/api/user`
 
 Base URL `/api/deck`
 
-| HTTP Method | URI path              | Description          |
-| ----------- | --------------------- | -------------------- |
-| GET         | `/getAllDecks`        | All decks            |
-| GET         | `/getDeckInfo`        | Get deck             |
-| GET         | `/getDeckByOwner/:id` | Get deck by owner ID |
-| POST        | `/createDeck`         | Create deck          |
-| PUT         | `/editDeck/:id`       | Edit deck by ID      |
-| DELETE      | `/deleteDeck/:id`     | Delete deck by ID    |
+| HTTP Method | URI path             | Description          |
+| ----------- | -------------------- | -------------------- |
+| GET         | `/getAllDecks`       | All decks            |
+| GET         | `/getDeckInfo`       | Get deck             |
+| GET         | `/getOwnerDecks/:id` | Get deck by owner ID |
+| POST        | `/createDeck`        | Create deck          |
+| PUT         | `/editDeck/:id`      | Edit deck by ID      |
+| DELETE      | `/deleteDeck/:id`    | Delete deck by ID    |
 
 ## Card routes
 

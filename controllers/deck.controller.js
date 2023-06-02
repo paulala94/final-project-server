@@ -25,7 +25,7 @@ const getAllDecks = (req, res, next) => {
 
 const getDeckInfo = (req, res, next) => {
 
-    const {_id} = req.params
+    const { _id } = req.params
 
     Deck
         .findById(_id)
@@ -35,10 +35,16 @@ const getDeckInfo = (req, res, next) => {
         .catch(err => next(err))
 }
 
-// const getDeckByOwner =(req, res, next) => {
+const getOwnerDecks =(req, res, next) => {
 
-//     const {_id }
-// }
+    const { _id } = req.params
+
+    Deck
+        .find({owner: _id})
+        .then(response => res.json(response))
+        .catch(err => next(err))
+
+}
 
 // UPDATE DECKS
 const editDeck = (req, res, next) => {
@@ -73,6 +79,7 @@ module.exports = {
     getAllDecks,
     getDeckInfo,
     editDeck,
+    getOwnerDecks,
     deleteDeck
 
 }
