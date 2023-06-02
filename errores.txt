@@ -4,3 +4,5 @@ arreglar lo de editar cloudinary
 problema- como meter cartas en los mazos? con populate?
 
 al eliminar un user no se eliminan sus cartas
+
+cuando eliminas cosas se quedan ahi y hay que refrescar la pagina para que se quiten
