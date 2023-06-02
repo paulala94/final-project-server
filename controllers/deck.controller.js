@@ -35,6 +35,11 @@ const getDeckInfo = (req, res, next) => {
         .catch(err => next(err))
 }
 
+// const getDeckByOwner =(req, res, next) => {
+
+//     const {_id }
+// }
+
 // UPDATE DECKS
 const editDeck = (req, res, next) => {
 
