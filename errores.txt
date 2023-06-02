@@ -1,8 +1,17 @@
 cuando te creas el perfil no redirecciona a login
 
 arreglar lo de editar cloudinary
-problema- como meter cartas en los mazos? con populate?
 
 al eliminar un user no se eliminan sus cartas
 
 cuando eliminas cosas se quedan ahi y hay que refrescar la pagina para que se quiten
+
+
+
+
+
+- ver las cartas del owner
+- ver las cartas del deck (getCardsByDeck)
+- en carta que salga lo de añadir a mazo
+
+- juego!!!!!!
