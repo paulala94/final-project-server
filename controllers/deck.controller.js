@@ -13,6 +13,7 @@ const createDeck = (req, res, next) => {
         .catch(err => next(err))
 }
 
+// READ DECKS
 const getAllDecks = (req, res, next) => {
     
     Deck
@@ -20,11 +21,40 @@ const getAllDecks = (req, res, next) => {
         .sort({name: 1})
         .then(response => res.json(response))
         .catch(err => next(err))
+}
+
+const getDeckInfo = (req, res, next) => {
+
+    const {_id} = req.params
+
+    Deck
+        .findById(_id)
+        .then((deck) => {
+            res.json(deck)
+        })
+        .catch(err => next(err))
+}
+
+// UPDATE DECKS
+const editDeck = (req, res, next) => {
+
+    const { name, description, owner } = req.body
+    const { _id } = req.params
+
+    Deck
+    .findByIdAndUpdate( _id,  { name, description, owner }, { new:true })
+    .then((editedDeck) => {
+        const { name, description, owner, _id } = editedDeck
+        res.send(201).json({ editedDeck })
+    })
+    .catch(err => next(err))
 
 }
 
 module.exports = {
     createDeck,
-    getAllDecks
+    getAllDecks,
+    getDeckInfo,
+    editDeck
 
 }
