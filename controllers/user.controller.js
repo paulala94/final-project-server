@@ -2,8 +2,7 @@ const router = require ("express").Router()
 const User = require("./../models/User.model")
 const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 
-//get user
-
+// GET USER
 const getUser =  (req, res, next) => {
 
     const {_id} = req.params
@@ -16,8 +15,7 @@ const getUser =  (req, res, next) => {
         .catch(err => next(err))
 }
 
-//edit user
-
+// EDIT USER
 const editUser =( req, res, next) => {  
 
     const { username, image, description } = req.body
@@ -33,9 +31,7 @@ const editUser =( req, res, next) => {
 
 }
 
-
-//delete user
-
+// DELETE USER
 const deleteUser = (req, res,next) => { 
 
     const { _id } = req.params
@@ -45,9 +41,6 @@ const deleteUser = (req, res,next) => {
         .then(() => res.sendStatus(204))
         .catch(err => next(err))
 }
-
-
-
 
 
 module.exports = {

@@ -28,6 +28,7 @@ Base URL `/api/deck`
 | HTTP Method | URI path              | Description          |
 | ----------- | --------------------- | -------------------- |
 | GET         | `/getAllDecks`        | All decks            |
+| GET         | `/getDeckInfo`        | Get deck             |
 | GET         | `/getDeckByOwner/:id` | Get deck by owner ID |
 | POST        | `/createDeck`         | Create deck          |
 | PUT         | `/editDeck/:id`       | Edit deck by ID      |
@@ -40,6 +41,7 @@ Base URL `/api/card`
 | HTTP Method | URI path              | Description          |
 | ----------- | --------------------- | -------------------- |
 | GET         | `/getAllCards`        | Get all cards        |
+| GET         | `/getCardInfo`        | Get card             |
 | GET         | `/getCardByOwner/:id` | Get card by owner ID |
 | GET         | `/getRandomCard`      | Get random card      |
 | POST        | `/createCard`         | Create new card      |

@@ -13,7 +13,6 @@ const createCard = (req, res, next) => {
         .catch(err => next(err))
 }
 
-
 // GET ALL CARDS
 const getAllCards = (req, res, next) => {
     
@@ -25,6 +24,18 @@ const getAllCards = (req, res, next) => {
         .catch(err => next(err))
 }
 
+// GET CARD INFO
+const getCardInfo = (req, res, next) => {
+
+    const { _id } = req.params
+
+    Card
+        .findById(_id)
+        .then((card) => {
+            res.json(card)
+        })
+        .catch(err => next(err))
+}
 
 // EDIT CARD
 const editCard = (req, res, next) => {
@@ -41,8 +52,22 @@ const editCard = (req, res, next) => {
         .catch(err => next(err))
 }
 
+// DELETE CARD
+const deleteCard = (req, res, next) => {
+
+    const { _id } = req.params
+
+    Card
+        .findByIdAndDelete(_id)
+        .then(() => res.sendStatus(204))
+        .catch(err => next(err))
+}
+
+
 module.exports = {
     createCard,
     getAllCards,
-    editCard
+    getCardInfo,
+    editCard,
+    deleteCard
 }
