@@ -35,6 +35,7 @@ const getDeckInfo = (req, res, next) => {
         .catch(err => next(err))
 }
 
+
 // UPDATE DECKS
 const editDeck = (req, res, next) => {
 
@@ -51,10 +52,23 @@ const editDeck = (req, res, next) => {
 
 }
 
+// DELETE DECK
+
+const deleteDeck = (req, res, next) => {
+
+    const { _id } = req.params
+
+    Deck
+        .findByIdAndDelete(_id)
+        .then(() => res.sendStatus(204))
+        .catch(err => next(err))
+}
+
 module.exports = {
     createDeck,
     getAllDecks,
     getDeckInfo,
-    editDeck
+    editDeck,
+    deleteDeck
 
 }

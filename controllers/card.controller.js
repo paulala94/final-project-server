@@ -31,6 +31,7 @@ const getCardInfo = (req, res, next) => {
 
     Card
         .findById(_id)
+        .populate("owner", "username")
         .then((card) => {
             res.json(card)
         })
