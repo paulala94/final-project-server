@@ -6,7 +6,7 @@ al eliminar un user no se eliminan sus cartas
 
 cuando eliminas cosas se quedan ahi y hay que refrescar la pagina para que se quiten
 
-
+como hacer que solo el owner pueda ver sus mazos/cartas
 
 
 
@@ -15,3 +15,7 @@ cuando eliminas cosas se quedan ahi y hay que refrescar la pagina para que se qu
 - en carta que salga lo de añadir a mazo
 
 - juego!!!!!!
+
+
+
+tenemos los mazos del user, necesitamos ver las cartas que hay dentro de cada mazo -> CardsInDecks
