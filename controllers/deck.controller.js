@@ -29,6 +29,7 @@ const getDeckInfo = (req, res, next) => {
 
     Deck
         .findById(_id)
+        .populate("owner", "username")
         .then((deck) => {
             res.json(deck)
         })
@@ -41,6 +42,7 @@ const getOwnerDecks =(req, res, next) => {
 
     Deck
         .find({owner: _id})
+        .populate("cards")
         .then(response => res.json(response))
         .catch(err => next(err))
 
