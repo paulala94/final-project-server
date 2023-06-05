@@ -30,6 +30,7 @@ const getDeckInfo = (req, res, next) => {
     Deck
         .findById(_id)
         .populate("owner", "username")
+        .populate("cards")
         .then((deck) => {
             res.json(deck)
         })
