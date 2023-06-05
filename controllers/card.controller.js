@@ -38,6 +38,18 @@ const getCardInfo = (req, res, next) => {
         .catch(err => next(err))
 }
 
+// GET OWNER CARDS
+const getOwnerCards = (req, res, next) => {
+
+    const { _id } = req.params
+
+    Card
+        .find({owner: _id})
+        .then(response => res.json(response))
+        .catch(err => next(err))
+
+}
+
 // EDIT CARD
 const editCard = (req, res, next) => {
 
@@ -69,6 +81,7 @@ module.exports = {
     createCard,
     getAllCards,
     getCardInfo,
+    getOwnerCards,
     editCard,
     deleteCard
 }
