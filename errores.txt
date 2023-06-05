@@ -1,5 +1,3 @@
-cuando te creas el perfil no redirecciona a login
-
 arreglar lo de editar cloudinary
 
 al eliminar un user no se eliminan sus cartas
