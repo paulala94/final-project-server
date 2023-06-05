@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const Card = require('./../models/Card.model')
+const Deck = require('../models/Deck.model')
 
 // CREATE CARDS
 const createCard = (req, res, next) => {
@@ -65,6 +66,21 @@ const editCard = (req, res, next) => {
         .catch(err => next(err))
 }
 
+const addCardToDeck = (req, res, next) => {
+
+    const { card_id, deck_id } = req.body
+
+    Deck
+        .findByIdAndUpdate( deck_id, {$push: {cards: card_id}})
+        .then((addedCard) => {
+            res.json(addedCard)
+        } )
+        .catch(err => next(err))
+
+
+
+}
+
 // DELETE CARD
 const deleteCard = (req, res, next) => {
 
@@ -83,5 +99,6 @@ module.exports = {
     getCardInfo,
     getOwnerCards,
     editCard,
+    addCardToDeck,
     deleteCard
 }
