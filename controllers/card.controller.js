@@ -19,7 +19,7 @@ const getAllCards = (req, res, next) => {
     Card
         .find()
         .sort({name: 1})
-        //.select({name: 1}) ---> esto hace que solo salga el name
+        .select({name: 1}) //---> esto hace que solo salga el name
         .then(response => res.json(response))
         .catch(err => next(err))
 }
