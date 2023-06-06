@@ -3,11 +3,13 @@ const Card = require('./../models/Card.model')
 const Deck = require('../models/Deck.model')
 
 
-// GET ALL CARDS
+// GET ALL RANDOM CARDS FROM ORIGINAL DECK
 const getRandomOGCards = (req, res, next) => {
+
+    const { ownerId } = req.query
     
     Card
-        .find()
+        .findById(ownerId)
         .then(response => res.json(response))
         .catch(err => next(err))
 }
@@ -18,5 +20,5 @@ const getRandomOGCards = (req, res, next) => {
 
 module.exports = {
     getRandomOGCards,
-    getRandomUserCards
+    // getRandomUserCards
 }

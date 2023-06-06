@@ -87,7 +87,6 @@ const removeCardFromDeck = (req, res, next) => {
     Deck
         .findByIdAndUpdate( deck_id, {$pull: {cards: card_id}})
         .then((removedCard) => {
-            console.log('removedCard ----------------------->', removedCard, 'deck ------------------------->', deck_id, 'card ---------------------->', card_id )
             res.json(removedCard)
         } )
         .catch(err => next(err))
