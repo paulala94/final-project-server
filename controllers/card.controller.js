@@ -71,7 +71,7 @@ const addCardToDeck = (req, res, next) => {
     const { card_id, deck_id } = req.body
 
     Deck
-        .findByIdAndUpdate( deck_id, {$push: {cards: card_id}})
+        .findByIdAndUpdate( deck_id, {$addToSet: {cards: card_id}})
         .then((addedCard) => {
             res.json(addedCard)
         } )
