@@ -5,24 +5,27 @@ const User = require('../models/User.model')
 
 // GET ALL RANDOM CARDS FROM ORIGINAL DECK
 const getRandomOGCard = (req, res, next) => {
-  User.findOne({ role: "ADMIN" })
+  User
+    .findOne({ role: "ADMIN" })
     .then(adminUser => {
       if (!adminUser) {
         return res.status(404).json({ message: "Admin user not found." })
       }
 
-      Deck.findOne({ owner: adminUser._id })
+      Deck
+        .findOne({ owner: adminUser._id })
         .then(deck => {
           if (!deck) {
             return res.status(404).json({ message: "No deck found." })
           }
 
-          Card.find({ owner: adminUser._id })
+          Card
+            .find({ owner: adminUser._id })
             .then(cards => {
               if (!cards || cards.length === 0) {
                 return res.sendStatus(404)
               }
-
+              // TODO: DESACOPLAR EN UTILS
               const randomCards = []
               while (randomCards.length < 10) {
                 const randomIndex = Math.floor(Math.random() * cards.length)
