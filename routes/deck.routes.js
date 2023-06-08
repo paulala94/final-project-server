@@ -16,7 +16,6 @@ router.get('/getDeckInfo/:_id', isAuthenticated, getDeckInfo)
 // GET DECK INFO
 router.get('/getRandomizedDeckCards/:_id', isAuthenticated, getRandomizedDeckCards)
 
-
 // GET DECK BY OWNER
 router.get('/getOwnerDecks/:_id', isAuthenticated, getOwnerDecks)
 

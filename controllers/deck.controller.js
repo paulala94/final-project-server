@@ -46,8 +46,10 @@ const getRandomizedDeckCards = (req, res, next) => {
         .findById(_id)
         .populate("cards")
         .then((deck) => {
-            deck.cards.sort(() => Math.random()-0.5)
-            res.json(deck.cards)
+          
+        const fourtyCards = deck.cards.slice(0, 40)
+        fourtyCards.sort(() => Math.random()-0.5)
+        res.json(fourtyCards)
         })
         .catch(err => next(err))
 }
