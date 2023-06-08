@@ -37,6 +37,23 @@ const getDeckInfo = (req, res, next) => {
         .catch(err => next(err))
 }
 
+
+const getRandomizedDeckCards = (req, res, next) => {
+
+    const { _id } = req.params
+
+    Deck
+        .findById(_id)
+        .populate("cards")
+        .then((deck) => {
+            deck.cards.sort(() => Math.random()-0.5)
+            res.json(deck.cards)
+        })
+        .catch(err => next(err))
+}
+
+
+
 const getOwnerDecks =(req, res, next) => {
 
     const { _id } = req.params
@@ -80,6 +97,7 @@ module.exports = {
     createDeck,
     getAllDecks,
     getDeckInfo,
+    getRandomizedDeckCards,
     editDeck,
     getOwnerDecks,
     deleteDeck

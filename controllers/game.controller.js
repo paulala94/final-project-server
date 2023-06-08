@@ -43,6 +43,42 @@ const getRandomOGCard = (req, res, next) => {
     .catch(err => next(err))
 }
 
+
+
+
+const getRandomUserCard = (req, res, next) => {
+    const { _id } = req.params
+
+        Deck
+        .findById(_id )
+        .then(deck => {
+          if (!deck) {
+            return res.status(404).json({ message: "No deck found." })
+          }
+
+          Card
+            .find({ owner: _id })
+            .then(cards => {
+              if (!cards || cards.length === 0) {
+                return res.sendStatus(404)
+              }
+              // TODO: DESACOPLAR EN UTILS
+              const randomCards = []
+              while (randomCards.length < 10) {
+                const randomIndex = Math.floor(Math.random() * cards.length)
+                const randomCard = cards[randomIndex]
+                if (!randomCards.includes(randomCard)) {
+                  randomCards.push(randomCard)
+                }
+              }
+              res.json(randomCards)
+            })
+            .catch(err => next(err))
+        })
+        .catch(err => next(err))
+}
+
 module.exports = {
-  getRandomOGCard
+  getRandomOGCard,
+  getRandomUserCard
 }

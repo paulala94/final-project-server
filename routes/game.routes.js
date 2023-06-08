@@ -4,9 +4,9 @@ const Deck = require('./../models/Deck.model')
 const { isAuthenticated } = require('./../middlewares/verifyToken.middleware')
 
 
-const { getRandomOGCard } = require("../controllers/game.controller.js")
+const { getRandomOGCard, getRandomUserCard } = require("../controllers/game.controller.js")
 
 router.get('/getRandomOGCard', getRandomOGCard)
-// router.get('/getRandomUserCards', isAuthenticated, getRandomUserCards)
+router.get('/getRandomUserCards/:_id', isAuthenticated, getRandomUserCard)
 
 module.exports = router
