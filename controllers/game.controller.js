@@ -27,7 +27,7 @@ const getRandomOGCard = (req, res, next) => {
               }
               // TODO: DESACOPLAR EN UTILS
               const randomCards = []
-              while (randomCards.length < 10) {
+              while (randomCards.length < 40) {
                 const randomIndex = Math.floor(Math.random() * cards.length)
                 const randomCard = cards[randomIndex]
                 if (!randomCards.includes(randomCard)) {
